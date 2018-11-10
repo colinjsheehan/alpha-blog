@@ -2,8 +2,6 @@ class ArticlesController < ApplicationController
     def new
         @article = Article.new 
     end
-    
-    ######################################################
 
     def create
         @article = Article.new(article_params)
@@ -15,7 +13,11 @@ class ArticlesController < ApplicationController
              render 'new'
         end
     end
-    ######################################################   
+    ######################################################  
+    def show
+        @article = Article.find(params[:id])
+    end
+    ######################################################
     
     private 
     def article_params
