@@ -7,13 +7,40 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<!--  add the flash to html -->
- <% flash.each do |name, msg| %>
-   <ul>
-     <li><%= msg %></li>
-   </ul>
-  <% end %>
+<!--  add the flash to html (sent to partial)-->
+<%= render 'layouts/messages'%>
+
 <%= yield %>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
