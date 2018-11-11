@@ -1,7 +1,4 @@
 class ArticlesController < ApplicationController
-   
-    before_action :set_article, only: [:edit, :update, :show, :destroy] # add this 
-    
     
     def index 
         # grab all articles
@@ -13,14 +10,14 @@ class ArticlesController < ApplicationController
     end
     # from the articles find article by ID
     def edit
-      
+        @article = Article.find(params[:id])
     end 
 
     def create
         @article = Article.new(article_params)
         # @article.user = current_user
         if @article.save
-             flash[:success] = "Article was successfully created"
+             flash[:success] = "Task was successfully created"
              redirect_to article_path(@article)
          else
              render 'new'
@@ -28,9 +25,9 @@ class ArticlesController < ApplicationController
     end
 
     def update 
-       
+        @article = Article.find(params[:id])
         if @article.update(article_params)
-            flash[:notice] = "Article was successfully updated"
+            flash[:notice] = "Task was successfully updated"
             redirect_to article_path(@article)
         else
             render 'edit'
@@ -38,42 +35,24 @@ class ArticlesController < ApplicationController
     end
     
     def show
-        
+        @article = Article.find(params[:id])
     end
     
-    
     def destroy
-
+        @article = Article.find(params[:id])
         @article.destroy
-        flash[:notice] = "Article was successfully deleted"
-        redirect_to articles_path
+        flash[:notice] = "Task was successfully destroyed"
+        redirect_to article_path(@article)
+        
+        
     end
     
     
     private 
-    
-        def set_article
-            @article = Article.find(params[:id])
-        end 
-        
-        def article_params
-            params.require(:article).permit(:title, :description)
-        end
+    def article_params
+        params.require(:article).permit(:title, :description)
+    end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
