@@ -2,11 +2,19 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   get 'about', to: 'pages#about'
+  
   resources :articles 
   
   get 'signup', to: 'users#new'
   post 'users', to: 'users#create'
   resources :users, except: [:new]
+  
+  
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  
+  resources :categories, except: [:destroy]
   #get 'pages/home', to: 'pages#home'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
