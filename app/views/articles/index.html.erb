@@ -1,16 +1,28 @@
+<div>
+  <h1 align="center">Task List: </h1>
 
+</div>
 
-<h1 align="center">Task List: </h1>
 <div align="center">
   <%= will_paginate %>
 </div>
+
 <%= render 'article', obj: @articles %>
 <div align="center">
   <%= will_paginate %>
+
+<form class="navbar-form navbar-center" role="search">
+    <%= form_tag(articles_path, method: :get, id: "search-form") do %>
+    <%= text_field_tag :search, params[:search],  class:"form-control", placeholder: "Search Articles" %>
+    <%= button_tag(class: "btn btn-default btn-sm", type: "submit") do %>submit
+    <i class="glyphicon glypyicon-search"></i>
+  <% end %>
+  <% end %>
+</form>
+
 </div>
 
 
 
 
-
-
+</div>

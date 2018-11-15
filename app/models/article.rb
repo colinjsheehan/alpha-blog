@@ -4,6 +4,8 @@ class Article < ActiveRecord::Base
 # <! ------------------------>  
     validates :user_id, presence: true
 # <! ------------------------>  
-
+    # def self.search(search)
+    #     where('title like ?', '%search%')
+    # end
 end 
 
