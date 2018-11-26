@@ -7,7 +7,8 @@
                         <%= link_to article.title, article_path(article)%> 
                     </div>
                     <div class="right">
-                            due on: <%= article.due_date.strftime("%d-%m-%Y") if article.due_date.present? %>
+                            Deadline in: <%= distance_of_time_in_words(Time.now, article.due_date) if article.due_date.present?%>
+                           (<%= article.due_date.strftime("%d-%m-%Y") if article.due_date.present? %>)
                     </div> 
 
                     <div class="article-body">
