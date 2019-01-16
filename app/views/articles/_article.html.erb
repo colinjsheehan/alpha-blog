@@ -6,16 +6,16 @@
                     <div class="article-title">
                         <%= link_to article.title, article_path(article)%> 
                     </div>
-                    <div class="right">
-                            Deadline in: <%= distance_of_time_in_words(Time.now, article.due_date) if article.due_date.present?%>
-                           (<%= article.due_date.strftime("%d-%m-%Y") if article.due_date.present? %>)
-                    </div> 
 
                     <div class="article-body">
                         <%= truncate(article.description, length: 99) %>
                         <div class="article-meta-details">
                             <small>
-                                  Created by:<%= article.user.username if article.user%>. 
+                                <p>
+                                    <i><b>Due by:</b> <%= article.due_date.strftime("%d-%m-%Y") if article.due_date.present? %> 
+                                       ,<b> in </b> <%= distance_of_time_in_words(Time.now, article.due_date) if article.due_date.present?%></i>  
+                                </p>
+                                  Created by: <%= article.user.username if article.user%>. 
                                    <%= time_ago_in_words(article.created_at)%> ago, 
                                    last updated: <%= time_ago_in_words(article.updated_at)%> ago
                            </small>
